@@ -18,7 +18,7 @@ const RecipeDetailCard = () => {
     const [comment, setComment] = useState("");
     const [commentsList, setCommentsList] = useState([]);
 
-    const handleSubmit = (e) => {
+    const  handleSubmit = (e) => {
         e.preventDefault();
         if (comment.trim()) {
             const newComment = {
@@ -30,7 +30,7 @@ const RecipeDetailCard = () => {
                 const res = await axios.post(`https://motherrecipe.runasp.net/api/comment/addcomment/`, newComment)
                 if (res.status == 200) {
                     setCommentsList((prev) => [
-                        { comment: comment ,date: new Date().toLocaleString() },
+                        { comment: comment ,date: new Date().toLocaleString(), userName: localStorage.getItem('username') },
                         ...prev,
                     ]);
 

@@ -7,12 +7,15 @@ const Login = ({aa}) => {
   const nav = useNavigate();
   async function submitHandler(d) {
     try{
+      const res = await axios.post("http://localhost:5236/api/User/getuser", d);
       // const res = await axios.post("https://motherrecipe.runasp.net/api/User/getuser", d);
-      const res = await axios.post("https://localhost:7069/api/User/getuser", d);
-      if(res.status == 200 && res.data.userId)
+      if(res.status == 200 && res.data)
       {
         localStorage.setItem('ID', res.data.userId)
         localStorage.setItem('Login', true)
+        localStorage.setItem('username', res.data.username)
+        localStorage.setItem('profilePic', res.data.profilePic)
+
         aa(res.data.userId)
         alert(res.data.message);
         nav("/")

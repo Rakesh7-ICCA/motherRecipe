@@ -52,7 +52,7 @@ public class UserController : Controller
   public IActionResult GetUser(LoginDto login)
   {
     SqlServerDB db = new SqlServerDB();
-    string query =  $"select userId from Users where Email = '{login.Email}' and PasswordHash = '{login.Password}'";
+    string query =  $"select * from Users where Email = '{login.Email}' and PasswordHash = '{login.Password}'";
     DataTable table = db.ExecuteQuery(query);
     if (table.Rows.Count > 0)
     {
@@ -60,9 +60,11 @@ public class UserController : Controller
       {
         message = "Login Successfully",
         userId = table.Rows[0]["userId"],
+        username = table.Rows[0]["userName"],
+        profilePic = table.Rows[0]["profilePicture"] ,
       });
     }
-    return BadRequest("Invalid Credentials");
+    return Unauthorized("Invalid Credentials");
   }
 
   [HttpPost("AddUser")]
