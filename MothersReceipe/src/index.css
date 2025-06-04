@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+
+.ql-editor{
+    height: 60vh !important;
+}
+
+/* Default browser styles for common HTML elements */
+.unreset h1 {
+    display: block;
+    font-size: 2em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+  }
+  
+  .unreset h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+  }
+  
+  .unreset h3 {
+    display: block;
+    font-size: 1.17em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+  }
+  
+  .unreset p {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  .unreset ul {
+    display: block;
+    list-style-type: disc;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 40px;
+  }
+  
+  .unreset ol {
+    display: block;
+    list-style-type: decimal;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 40px;
+  }
+  
+  .unreset li {
+    display: list-item;
+  }
+  
+  .unreset a {
+    color: blue;
+    text-decoration: underline;
+    cursor: auto;
+  }
+  
+  .unreset strong, .unreset b {
+    font-weight: bold;
+  }
+  
+  .unreset em, .unreset i {
+    font-style: italic;
+  }
+  

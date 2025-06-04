@@ -1,0 +1,6 @@
+@Motherskitchen_HostAddress = http://localhost:5236
+
+GET {{Motherskitchen_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
