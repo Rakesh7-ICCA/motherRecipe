@@ -4,7 +4,7 @@ import "react-quill/dist/quill.snow.css";
 import { FiClock, FiSave, FiPlus, FiUser, FiChevronDown } from "react-icons/fi";
 import axios from "axios";
 import ImageResize from 'quill-image-resize-module-react';
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const RecipeEditor = () => {
 
@@ -15,6 +15,7 @@ const RecipeEditor = () => {
   const [prepTime, setPrepTime] = useState(30);
   const [image, setImage] = useState(null);
 
+  const nav = useNavigate()
 
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -96,9 +97,11 @@ const RecipeEditor = () => {
               // const res = await axios.post('http://localhost:5236/api/Recipe/AddRecipe', data)
               if(res.status)
                 {
+                  debugger;
                   if (await setRecipeImage(res.data.rid))
                   {
                     alert(res.data.msg)
+                    nav("/user-dashboard")
                  }
               }
             }
