@@ -96,7 +96,7 @@ const RecipeEditor = () => {
               // const res = await axios.post('http://localhost:5236/api/Recipe/AddRecipe', data)
               if(res.status)
                 {
-                  if (setRecipeImage(res.data.rid))
+                  if (await setRecipeImage(res.data.rid))
                   {
                     alert(res.data.msg)
                  }
