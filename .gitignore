@@ -54,6 +54,7 @@ Thumbs.db
 
 # Build output`
 /build/
+/Reports/
 
 # React-specific
 /.cache/

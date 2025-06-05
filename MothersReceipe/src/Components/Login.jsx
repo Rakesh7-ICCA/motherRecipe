@@ -7,8 +7,8 @@ const Login = ({aa}) => {
   const nav = useNavigate();
   async function submitHandler(d) {
     try{
-      const res = await axios.post("http://localhost:5236/api/User/getuser", d);
-      // const res = await axios.post("https://motherrecipe.runasp.net/api/User/getuser", d);
+      // const res = await axios.post("http://localhost:5236/api/User/getuser", d);
+      const res = await axios.post("https://motherrecipe.runasp.net/api/User/getuser", d);
       if(res.status == 200 && res.data)
       {
         localStorage.setItem('ID', res.data.userId)
