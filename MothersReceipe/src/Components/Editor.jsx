@@ -92,8 +92,8 @@ const RecipeEditor = () => {
         else {
           (async () => {
             try {
-              // const res = await axios.post('https://motherrecipe.runasp.net/api/Recipe/AddRecipe', data)
-              const res = await axios.post('http://localhost:5236/api/Recipe/AddRecipe', data)
+              const res = await axios.post('https://motherrecipe.runasp.net/api/Recipe/AddRecipe', data)
+              // const res = await axios.post('http://localhost:5236/api/Recipe/AddRecipe', data)
               if(res.status)
                 {
                   if (setRecipeImage(res.data.rid))
