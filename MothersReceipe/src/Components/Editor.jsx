@@ -67,21 +67,19 @@ const RecipeEditor = () => {
     data.Description = description;
     data.instruction = process;
     data.time = prepTime;
-    data.CatagoryId = selectedCategoryId;
+    data.CategoryId = selectedCategoryId;
     data.RecipeImage="adsfasdf";
 
     console.log(data)
 
     try{
-      const bool = await setRecipeImage();
-      if (bool) {
   
         if (rid && id) {
           (async () => {
             try {
   
               const res = await axios.put('https://motherrecipe.runasp.net/api/Recipe/UpdateRecipe/' + rid, data)
-              alert(res.data)
+              alert(res.data.msg)
             }
             catch (err) {
               alert(err)
@@ -94,16 +92,21 @@ const RecipeEditor = () => {
         else {
           (async () => {
             try {
-              const res = await axios.post('https://motherrecipe.runasp.net/api/Recipe/AddRecipe', data)
-              alert(res.data)
+              // const res = await axios.post('https://motherrecipe.runasp.net/api/Recipe/AddRecipe', data)
+              const res = await axios.post('http://localhost:5236/api/Recipe/AddRecipe', data)
+              if(res.status)
+                {
+                  if (setRecipeImage(res.data.rid))
+                  {
+                    alert(res.data.msg)
+                 }
+              }
             }
             catch (err) {
               alert(err)
             }
           })()
         }
-  
-      }
 
     }
     catch(e)
@@ -112,11 +115,12 @@ const RecipeEditor = () => {
     }
   };
 
-  async function setRecipeImage() {
+  async function setRecipeImage(trid) {
     const fd = new FormData();
     fd.append('File', image);
     fd.append('fileName', title);
-    const imageres = await axios.post('https://motherrecipe.runasp.net/api/Recipe/AddImageToRecipe/'+rid, fd, {
+    const imageres = await axios.post('https://motherrecipe.runasp.net/api/Recipe/AddImageToRecipe/'+trid, fd, {
+    // const imageres = await axios.post('http://localhost:5236/api/Recipe/AddImageToRecipe/'+trid, fd, {
       headers: {
         "Content-Type": "multipart/form-data"
       }

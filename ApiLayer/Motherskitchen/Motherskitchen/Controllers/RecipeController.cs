@@ -38,10 +38,10 @@ public class RecipeController : ControllerBase
     [HttpPost("AddRecipe")]
     public IActionResult AddRecipe([FromBody] ReciepeDTO recipe)
     {
-        
+        Guid id = Guid.NewGuid();
         Recipe rc = new Recipe()
         {
-            RecipeId = Guid.NewGuid(),
+            RecipeId = id,
             UserId = recipe.UserId,
             Instruction =  recipe.Instruction,
             Description =  recipe.Description,
@@ -51,7 +51,7 @@ public class RecipeController : ControllerBase
         };
         
         string msg = bl.AddRecipe(rc);
-            return msg== "true"?  Ok("Added new receipe successfully") : Ok(msg);
+            return msg== "true"?  Ok(new {msg="Added new receipe successfully", rid=rc.RecipeId}) : BadRequest(msg);
     }
 
     [HttpPut("UpdateRecipe/{RecipeID}")]
