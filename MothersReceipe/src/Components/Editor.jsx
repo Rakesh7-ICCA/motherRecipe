@@ -26,7 +26,7 @@ const RecipeEditor = () => {
 
   const fetchRecipe = async () => {
 
-    const response = await axios.get(`https://motherrecipe.runasp.net/api/Recipe/GetRecipesbyRecipeId/${rid}`);
+    const response = await axios.get(`http://localhost:5236/api/Recipe/GetRecipesbyRecipeId/${localStorage.getItem('ID')}/${rid}`);
     const data = await response.data;
     setTitle(data.title);
     setDescription(data.description)

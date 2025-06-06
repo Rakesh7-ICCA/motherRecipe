@@ -69,8 +69,8 @@ public class RecipeController : ControllerBase
         return Ok(bl.getRecipesbyUserId(UserId, baseUrl));
     }
 
-    [HttpPost("GetRecipesbyRecipeId")]
-    public IActionResult GetRecipesbyRecipeId([FromForm]Guid UserId, [FromForm] Guid RecipeId )
+    [HttpGet("GetRecipesbyRecipeId/{UserId}/{RecipeId}")]
+    public IActionResult GetRecipesbyRecipeId([FromRoute]Guid UserId, [FromRoute] Guid RecipeId )
     {
         string baseUrl = $"{Request.Scheme}://{Request.Host}/";;
         return Ok(bl.getRecipeById(RecipeId, baseUrl, UserId));
