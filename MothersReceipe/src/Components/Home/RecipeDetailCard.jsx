@@ -30,7 +30,7 @@ const RecipeDetailCard = () => {
                 const res = await axios.post(`https://motherrecipe.runasp.net/api/comment/addcomment/`, newComment)
                 if (res.status == 200) {
                     setCommentsList((prev) => [
-                        { comment: comment ,date: new Date().toLocaleString(), userName: localStorage.getItem('username') },
+                        { comment: comment ,date: new Date().toLocaleString(), userName: localStorage.getItem('username'), profilePicture:'https://motherrecipe.runasp.net/'+localStorage.getItem('profilePic') },
                         ...prev,
                     ]);
 
